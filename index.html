@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Anniversary ❤️</title>
+
+<style>
+
+body {
+font-family: Arial, sans-serif;
+background: linear-gradient(45deg, #ff9a9e, #fad0c4);
+text-align: center;
+color: white;
+overflow-x: hidden;
+margin:0;
+padding:0;
+}
+
+.page {
+display: none;
+min-height: 100vh;
+padding: 40px 20px;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+animation: fade 1s ease;
+}
+
+.active { display: flex; }
+
+@keyframes fade {
+from {opacity:0}
+to {opacity:1}
+}
+
+h1{ font-size: 32px; margin-bottom:20px; }
+h2{ font-size:22px; line-height:1.6; }
+p{ font-size:20px; line-height:1.6; max-width:500px; }
+
+button {
+padding: 14px 30px;
+margin: 20px;
+border: none;
+border-radius: 30px;
+font-size: 18px;
+cursor: pointer;
+}
+
+.yes { background: #ff4d6d; color: white; }
+
+.no {
+background: white;
+color: black;
+position: absolute;
+}
+
+.heart {
+position: fixed;
+color: red;
+animation: float 5s linear infinite;
+}
+
+.sparkle{
+position:fixed;
+font-size:20px;
+animation: sparkle 1s linear forwards;
+}
+
+@keyframes sparkle{
+0%{opacity:1; transform:scale(1)}
+100%{opacity:0; transform:scale(2)}
+}
+
+@keyframes float {
+0% {transform: translateY(100vh);opacity:1;}
+100% {transform: translateY(-10vh);opacity:0;}
+}
+
+canvas {
+position: fixed;
+top: 0;
+left: 0;
+pointer-events: none;
+}
+
+</style>
+</head>
+
+<body>
+
+<canvas id="fireworks"></canvas>
+
+<script>
+
+// floating hearts
+setInterval(() => {
+let heart = document.createElement("div");
+heart.innerHTML = "❤️";
+heart.className = "heart";
+heart.style.left = Math.random() * 100 + "vw";
+heart.style.fontSize = Math.random() * 20 + 20 + "px";
+document.body.appendChild(heart);
+setTimeout(() => {heart.remove();}, 5000);
+}, 300);
+
+// click sparkle effect
+document.addEventListener("click", function(e){
+let sparkle = document.createElement("div");
+sparkle.innerHTML="✨";
+sparkle.className="sparkle";
+sparkle.style.left = e.clientX+"px";
+sparkle.style.top = e.clientY+"px";
+document.body.appendChild(sparkle);
+setTimeout(()=>sparkle.remove(),1000);
+});
+
+// fireworks
+const canvas = document.getElementById('fireworks');
+const ctx = canvas.getContext('2d');
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+function firework(){
+let x = Math.random()*canvas.width;
+let y = Math.random()*canvas.height/2;
+for(let i=0;i<50;i++){
+ctx.beginPath();
+ctx.arc(x+Math.random()*100-50,y+Math.random()*100-50,2,0,Math.PI*2);
+ctx.fillStyle='white';
+ctx.fill();
+}
+}
+setInterval(firework,1500);
+
+</script>
+
+<!-- Page 1 -->
+<div class="page active" id="page1">
+<h2>From Deepanshu to Preeti 💖</h2>
+<h1 id="typing"></h1>
+<p>
+Preeti ❤️
+Aaj humari 1st Anniversary hai
+Aur main bas itna kehna chahta hoon
+Tum meri life ki sabse beautiful feeling ho
+Aur main lucky hoon ki tum meri ho ❤️
+</p>
+<button onclick="nextPage(2)">Next ❤️</button>
+</div>
+
+<!-- Page 2 -->
+<div class="page" id="page2">
+<h2>
+Jab se tum meri life me aayi ho
+Sab kuch beautiful ho gaya hai
+Tumhari smile meri weakness hai
+Aur tum meri sabse favourite ho ❤️
+— Deepanshu
+</h2>
+<button onclick="nextPage(3)">Next ❤️</button>
+</div>
+
+<!-- Page 3 -->
+<div class="page" id="page3">
+<h1>I Love You Preeti ❤️</h1>
+<button class="yes" onclick="nextPage(4)">I Love You Too ❤️</button>
+<button class="no" onmouseover="moveButton(this)">I Don't</button>
+</div>
+
+<!-- Page 4 -->
+<div class="page" id="page4">
+<h2>
+Tere bina adhura hoon main
+Tere saath hi poora hoon main
+Tu mile to duniya mil jaaye
+Tu na mile to kuch bhi nahi ❤️
+— Deepanshu
+</h2>
+<button onclick="nextPage(5)">Next ❤️</button>
+</div>
+
+<!-- Page 5 -->
+<div class="page" id="page5">
+<h2>
+Teri muskaan meri pehchaan hai
+Teri khushi meri jaan hai
+Bas tu hi meri duniya hai ❤️
+— Deepanshu
+</h2>
+<button onclick="nextPage(6)">Next ❤️</button>
+</div>
+
+<!-- Page 6 -->
+<div class="page" id="page6">
+<h2>
+Main promise karta hoon
+Hamesha tumhara saath dunga
+Har situation me tumhare saath rahunga
+Because I Love You So Much ❤️
+— Deepanshu
+</h2>
+<button onclick="nextPage(7)">Next ❤️</button>
+</div>
+
+<!-- Page 7 -->
+<div class="page" id="page7">
+<h1>Preeti, Will You Stay With Me Forever? ❤️</h1>
+<button class="yes" onclick="nextPage(8)">Yes ❤️</button>
+<button class="no" onmouseover="moveButton(this)">No</button>
+</div>
+
+<!-- Page 8 -->
+<div class="page" id="page8">
+<h1>I Love You So Much Preeti ❤️</h1>
+<h2>Happy Anniversary ❤️</h2>
+<h2>Forever Yours, Deepanshu ❤️</h2>
+</div>
+
+<script>
+
+const text = "Happy 1st Anniversary Preeti ❤️";
+let index = 0;
+function type(){
+if(index < text.length){
+document.getElementById("typing").innerHTML += text.charAt(index);
+index++;
+setTimeout(type, 80);
+}
+}
+type();
+
+function nextPage(pageNumber) {
+let pages = document.querySelectorAll('.page');
+pages.forEach(page => page.classList.remove('active'));
+document.getElementById('page' + pageNumber).classList.add('active');
+window.scrollTo(0,0);
+}
+
+function moveButton(button) {
+button.style.top = Math.random() * 80 + "%";
+button.style.left = Math.random() * 80 + "%";
+}
+
+</script>
+
+</body>
+</html>
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Anniversary ❤️</title>
+
+<style>
+
+body {
+font-family: Arial, sans-serif;
+background: linear-gradient(45deg, #ff9a9e, #fad0c4);
+text-align: center;
+color: white;
+overflow: hidden;
+}
+
+.page {
+display: none;
+height: 100vh;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+}
+
+.active {
+display: flex;
+}
+
+button {
+padding: 12px 25px;
+margin: 10px;
+border: none;
+border-radius: 25px;
+font-size: 18px;
+cursor: pointer;
+}
+
+.yes {
+background: #ff4d6d;
+color: white;
+}
+
+.no {
+background: white;
+color: black;
+position: absolute;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- Page 1 -->
+<div class="page active" id="page1">
+<h1>Happy 1st Anniversary ❤️</h1>
+<p>
+Tum meri life ka sabse beautiful part ho ❤️
+
+Tumhare bina sab adhura sa lagta hai
+
+Thank you meri life me aane ke liye
+
+Dekhunga sari romantic movie tere sath mein
+Leke tera hath apne hath mein 
+Phir baat hogi chandni raat mein
+Jab se dheka hain tujha ho gaya hu deewana tera
+Tera bina nhi lagta ab dil yeh mera 
+Kitna khoya khoya sa rahne laga hu
+Tera he bare main ab sirf Kahne laga hu
+Teri pyaare bato main ab bahne laga ye dil
+Kahta hain roj tujhse mil
+Milna ka baad dil gulab ke Tarah jata hain ye khil
+Fir Teri cute smile kar deti hain mera dil ko kill 
+
+I love you so much
+</p>
+
+<button onclick="nextPage(2)">Next ❤️</button>
+</div>
+
+<!-- Page 2 -->
+<div class="page" id="page2">
+<h1>I Love You 
+  
+  do you love me ❤️</h1>
+
+<button class="yes" onclick="nextPage(3)">I Love You Too ❤️</button>
+<button class="no" onmouseover="moveButton(this)">I Don't</button>
+
+</div>
+
+<!-- Page 3 -->
+<div class="page" id="page3">
+<h2>
+Tere bina adhura hoon main
+
+Tere saath hi poora hoon main
+
+Tu mile to duniya mil jaaye
+
+Tu na mile to kuch bhi nahi
+
+Na samjhna aata ha na manana aata ha 
+Hamko to tara rang ma rang jana aata ha
+
+Vada nahi karuga kyuki suna ha tut jata ha
+Par jaan humko rishta nibhana aata  ha
+
+Tu ruth jya to ,tara man pasand khana banauga 
+Ha tu nahi khyagi to kya hua ,ma apn hath sa khilauga 
+
+Tujko manata manata ma tari godh ma lat jauga 
+
+Ki naraz hogi tu mujhsa fir bhi tujko he chahuga 
+
+Khoka tujma ma khud ko pauga 
+Orr khana sa baat na bhi bana to tare nakhre bhi uthauga 
+
+Zada ammer to hu nahi par tarko jhumka zaroor dilauga 
+ 
+Ulajh jayegi tu to tujko suljhaunga 
+Tari sari parashani ma apna upar laa jauga 
+
+Tu roo la tujko jitna rona ha ma tujko apni bachi jase gale lagauga 
+
+Jabardasti chup nahi karuga tumko 
+Bas pyar sa shalauga 
+
+Bata in sab cheezo sa kya ma rishta nibhana pauga 
+Kya ma Tara bankar khud ko paa pauga❤️
+</h2>
+
+<button onclick="nextPage(4)">Next ❤️</button>
+
+</div>
+
+<!-- Page 4 -->
+<div class="page" id="page4">
+<h1>Will You Stay With Me Forever? ❤️</h1>
+
+<button class="yes" onclick="nextPage(5)">Yes ❤️</button>
+<button class="no" onmouseover="moveButton(this)">No</button>
+
+</div>
+
+<!-- Page 5 -->
+<div class="page" id="page5">
+<h1>I Love You So Much ❤️</h1>
+<h2>Happy Anniversary My Love ❤️</h2>
+
+</div>
+
+<script>
+
+function nextPage(pageNumber) {
+
+let pages = document.querySelectorAll('.page');
+
+pages.forEach(page => page.classList.remove('active'));
+
+document.getElementById('page' + pageNumber).classList.add('active');
+
+}
+
+function moveB
