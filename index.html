@@ -13,6 +13,7 @@ background: linear-gradient(45deg, #ff9a9e, #fad0c4);
 text-align: center;
 color: white;
 overflow-x: hidden;
+overflow-y: auto;
 margin:0;
 padding:0;
 }
@@ -25,6 +26,7 @@ justify-content: center;
 align-items: center;
 flex-direction: column;
 animation: fade 1s ease;
+overflow-y: auto;
 }
 
 .active { display: flex; }
@@ -194,7 +196,7 @@ Kya ma Tara bankar khud ko paa pauga
 <div class="page" id="page3">
 <h1>I Love You Preeti do you love me ❤️</h1>
 <button class="yes" onclick="nextPage(4)">I Love You Too ❤️</button>
-<button class="no" onmouseover="moveButton(this)">I Don't</button>
+<button class="no" ontouchstart="moveButton(this)" onmouseover="moveButton(this)">I Don't</button>
 </div>
 
 <!-- Page 4 -->
@@ -248,7 +250,7 @@ Lakin mere maa se better saas nahe
 <div class="page" id="page7">
 <h1>Preeti, Will You Stay With Me Forever? ❤️</h1>
 <button class="yes" onclick="nextPage(8)">Yes ❤️</button>
-<button class="no" onmouseover="moveButton(this)">No</button>
+<button class="no" ontouchstart="moveButton(this)" onmouseover="moveButton(this)">No</button>
 </div>
 
 <!-- Page 8 -->
@@ -287,171 +289,3 @@ button.style.left = Math.random() * 80 + "%";
 
 </body>
 </html>
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy Anniversary ❤️</title>
-
-<style>
-
-body {
-font-family: Arial, sans-serif;
-background: linear-gradient(45deg, #ff9a9e, #fad0c4);
-text-align: center;
-color: white;
-overflow: hidden;
-}
-
-.page {
-display: none;
-height: 100vh;
-justify-content: center;
-align-items: center;
-flex-direction: column;
-}
-
-.active {
-display: flex;
-}
-
-button {
-padding: 12px 25px;
-margin: 10px;
-border: none;
-border-radius: 25px;
-font-size: 18px;
-cursor: pointer;
-}
-
-.yes {
-background: #ff4d6d;
-color: white;
-}
-
-.no {
-background: white;
-color: black;
-position: absolute;
-}
-
-</style>
-</head>
-
-<body>
-
-<!-- Page 1 -->
-<div class="page active" id="page1">
-<h1>Happy 1st Anniversary ❤️</h1>
-<p>
-Tum meri life ka sabse beautiful part ho ❤️
-
-Tumhare bina sab adhura sa lagta hai
-
-Thank you meri life me aane ke liye
-
-Dekhunga sari romantic movie tere sath mein
-Leke tera hath apne hath mein 
-Phir baat hogi chandni raat mein
-Jab se dheka hain tujha ho gaya hu deewana tera
-Tera bina nhi lagta ab dil yeh mera 
-Kitna khoya khoya sa rahne laga hu
-Tera he bare main ab sirf Kahne laga hu
-Teri pyaare bato main ab bahne laga ye dil
-Kahta hain roj tujhse mil
-Milna ka baad dil gulab ke Tarah jata hain ye khil
-Fir Teri cute smile kar deti hain mera dil ko kill 
-
-I love you so much
-</p>
-
-<button onclick="nextPage(2)">Next ❤️</button>
-</div>
-
-<!-- Page 2 -->
-<div class="page" id="page2">
-<h1>I Love You 
-  
-  do you love me ❤️</h1>
-
-<button class="yes" onclick="nextPage(3)">I Love You Too ❤️</button>
-<button class="no" onmouseover="moveButton(this)">I Don't</button>
-
-</div>
-
-<!-- Page 3 -->
-<div class="page" id="page3">
-<h2>
-Tere bina adhura hoon main
-
-Tere saath hi poora hoon main
-
-Tu mile to duniya mil jaaye
-
-Tu na mile to kuch bhi nahi
-
-Na samjhna aata ha na manana aata ha 
-Hamko to tara rang ma rang jana aata ha
-
-Vada nahi karuga kyuki suna ha tut jata ha
-Par jaan humko rishta nibhana aata  ha
-
-Tu ruth jya to ,tara man pasand khana banauga 
-Ha tu nahi khyagi to kya hua ,ma apn hath sa khilauga 
-
-Tujko manata manata ma tari godh ma lat jauga 
-
-Ki naraz hogi tu mujhsa fir bhi tujko he chahuga 
-
-Khoka tujma ma khud ko pauga 
-Orr khana sa baat na bhi bana to tare nakhre bhi uthauga 
-
-Zada ammer to hu nahi par tarko jhumka zaroor dilauga 
- 
-Ulajh jayegi tu to tujko suljhaunga 
-Tari sari parashani ma apna upar laa jauga 
-
-Tu roo la tujko jitna rona ha ma tujko apni bachi jase gale lagauga 
-
-Jabardasti chup nahi karuga tumko 
-Bas pyar sa shalauga 
-
-Bata in sab cheezo sa kya ma rishta nibhana pauga 
-Kya ma Tara bankar khud ko paa pauga❤️
-</h2>
-
-<button onclick="nextPage(4)">Next ❤️</button>
-
-</div>
-
-<!-- Page 4 -->
-<div class="page" id="page4">
-<h1>Will You Stay With Me Forever? ❤️</h1>
-
-<button class="yes" onclick="nextPage(5)">Yes ❤️</button>
-<button class="no" onmouseover="moveButton(this)">No</button>
-
-</div>
-
-<!-- Page 5 -->
-<div class="page" id="page5">
-<h1>I Love You So Much ❤️</h1>
-<h2>Happy Anniversary My Love ❤️</h2>
-
-</div>
-
-<script>
-
-function nextPage(pageNumber) {
-
-let pages = document.querySelectorAll('.page');
-
-pages.forEach(page => page.classList.remove('active'));
-
-document.getElementById('page' + pageNumber).classList.add('active');
-
-}
-
-function moveB
